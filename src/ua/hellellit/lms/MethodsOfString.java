@@ -10,6 +10,10 @@ public class MethodsOfString {
   }
 
   static int findSymbolOccurance(String str, char ch) {
+    if (str == null) {
+      System.out.print("Невірно введені дані. ");
+      return -1;
+    }
     int count = 0;
     for (int i = 0; i < str.length(); i++) {
       if (str.charAt(i) == ch) {
@@ -24,19 +28,11 @@ public class MethodsOfString {
   }
 
   static String stringReverse(String str) {
-    String result = "";
-    for (int i = 0; i < str.length(); i++) {
-      result = str.charAt(i) + result;
-    }
-    return result;
+    StringBuilder result = new StringBuilder(str);
+    return result.reverse().toString();
   }
 
   static boolean isPalindrome(String str) {
-    for (int i = 0; i <= str.length() / 2; i++) {
-      if (str.toLowerCase().charAt(i) != str.toLowerCase().charAt(str.length() - i - 1)) {
-        return false;
-      }
-    }
-    return true;
+    return str.toLowerCase().equals(stringReverse(str.toLowerCase()));
   }
 }

@@ -35,21 +35,21 @@ public class Game {
   }
 
   static String compareWords(String expected, String actual) {
-    String word = "";
+    StringBuilder word = new StringBuilder();
 
     for (int i = 0; i < Math.min(expected.length(), actual.length()); i++) {
       if (expected.charAt(i) == actual.charAt(i)) {
-        word = word + expected.charAt(i);
+        word.append(expected.charAt(i));
       } else {
-        word = word + "#";
+        word.append("#");
       }
     }
 
-    if (word.length() < 15 && !word.equals(expected)) {
+    if (word.length() < 15 && !word.toString().equals(expected)) {
       for (int i = word.length() - 1; i < 15; i++) {
-        word = word + "#";
+        word.append("#");
       }
     }
-    return word;
+    return word.toString();
   }
 }
